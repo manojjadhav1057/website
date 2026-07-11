@@ -737,22 +737,12 @@ Book Site Visit
 
 <form id="bookingForm">
 
-  <input type="text"
-    name="name"
-    placeholder="Your Name"
-    required>
+  <input type="text" name="name" placeholder="Your Name" required>
 
-  <input type="tel"
-    name="phone"
-    placeholder="Mobile Number"
-    pattern="[0-9]{10}"
-    title="Enter 10 digit mobile number"
-    required>
+  <input type="tel" name="phone" placeholder="Mobile Number"
+    pattern="[0-9]{10}" required>
 
-  <input type="email"
-    name="email"
-    placeholder="Email Address"
-    required>
+  <input type="email" name="email" placeholder="Email Address" required>
 
   <select name="property" required>
     <option value="">Select Property</option>
@@ -760,12 +750,8 @@ Book Site Visit
     <option>2 BHK Apartment</option>
   </select>
 
-  <!-- 📅 Site Visit Date -->
-  <input type="date"
-    name="visit_date"
-    required>
+  <input type="date" name="visit_date" required>
 
-  <!-- ⏰ Time Slot -->
   <select name="visit_time" required>
     <option value="">Select Time Slot</option>
     <option>10:00 AM</option>
@@ -774,15 +760,39 @@ Book Site Visit
     <option>4:00 PM</option>
   </select>
 
-  <textarea rows="4"
-    name="message"
-    placeholder="Message"></textarea>
+  <textarea name="message" rows="4" placeholder="Message"></textarea>
 
-  <button type="submit">
-    Request Callback
-  </button>
+  <button type="submit">Request Callback</button>
 
 </form>
+
+<p id="statusMsg"></p>
+
+<script>
+const scriptURL = "https://google.com"; // 👈 paste here
+
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
+
+  document.getElementById("statusMsg").innerText = "Submitting...";
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(() => {
+    document.getElementById("statusMsg").innerText = "✅ Booking submitted!";
+    document.getElementById("bookingForm").reset();
+  })
+  .catch(() => {
+    document.getElementById("statusMsg").innerText = "❌ Error submitting form";
+  });
+});
+</script>
 
 
 </div>
