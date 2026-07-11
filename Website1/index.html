@@ -735,50 +735,52 @@ Book Site Visit
 </h2>
 
 
-<form>
+<form id="bookingForm">
 
+  <input type="text"
+    name="name"
+    placeholder="Your Name"
+    required>
 
-<input type="text"
-placeholder="Your Name"
-required>
+  <input type="tel"
+    name="phone"
+    placeholder="Mobile Number"
+    pattern="[0-9]{10}"
+    title="Enter 10 digit mobile number"
+    required>
 
+  <input type="email"
+    name="email"
+    placeholder="Email Address"
+    required>
 
-<input type="tel"
-placeholder="Mobile Number"
-required>
+  <select name="property" required>
+    <option value="">Select Property</option>
+    <option>1 BHK Apartment</option>
+    <option>2 BHK Apartment</option>
+  </select>
 
+  <!-- 📅 Site Visit Date -->
+  <input type="date"
+    name="visit_date"
+    required>
 
-<input type="email"
-placeholder="Email Address">
+  <!-- ⏰ Time Slot -->
+  <select name="visit_time" required>
+    <option value="">Select Time Slot</option>
+    <option>10:00 AM</option>
+    <option>12:00 PM</option>
+    <option>2:00 PM</option>
+    <option>4:00 PM</option>
+  </select>
 
+  <textarea rows="4"
+    name="message"
+    placeholder="Message"></textarea>
 
-<select>
-
-<option>
-Select Property
-</option>
-
-<option>
-1 BHK Apartment
-</option>
-
-<option>
-2 BHK Apartment
-</option>
-
-</select>
-
-
-<textarea rows="4"
-placeholder="Message"></textarea>
-
-
-<button>
-
-Request Callback
-
-</button>
-
+  <button type="submit">
+    Request Callback
+  </button>
 
 </form>
 
